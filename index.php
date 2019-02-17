@@ -9,5 +9,6 @@ $controller = new Controller($model);
 $view = new View($controller, $model);
 
 $controller->draft();
+$controller->win();
 
 echo $view->output();

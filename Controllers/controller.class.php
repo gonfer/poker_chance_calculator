@@ -37,10 +37,12 @@ class Controller{
 
         $this->model->draftCards();
        
+    }
+
+    public function win(){
         if($this->model->win){
             header("Location: win.php?p=".$this->model->probability_suit_card);
             die();
         }
-
     }
 }

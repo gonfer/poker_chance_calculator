@@ -18,7 +18,7 @@ class Model
 
     public $actual_card_drafted = "";
 
-    public $cards_appeared = array();
+    public $cards_appeared = "";
 
     //If card matches then win true
     public $win = false;

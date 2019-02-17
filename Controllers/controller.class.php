@@ -2,10 +2,22 @@
 class Controller{
     private $model;
 
+    /**
+     * __construct
+     *
+     * @param  mixed $model
+     *
+     * @return void
+     */
     public function __construct($model) {
         $this->model = $model;
     }
 
+    /**
+     * draft
+     *
+     * @return void
+     */
     public function draft(){
         if (isset($_POST['suit_to_select']) && !empty($_POST['suit_to_select'])) {
             $this->model->suit_selected = $_POST['suit_to_select'];
@@ -26,7 +38,7 @@ class Controller{
         $this->model->draftCards();
        
         if($this->model->win){
-            header("Location: win.php");
+            header("Location: win.php?p=".$this->model->probability_suit_card);
             die();
         }
 

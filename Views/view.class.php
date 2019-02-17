@@ -5,11 +5,24 @@ class View
     private $model;
     private $controller;
 
+    /**
+     * __construct
+     *
+     * @param  mixed $controller
+     * @param  mixed $model
+     *
+     * @return void
+     */
     public function __construct($controller,$model) {
         $this->controller = $controller;
         $this->model = $model;
     }
 	
+    /**
+     * output
+     *
+     * @return void
+     */
     public function output(){
         $output = $this->outputHeader();
 
@@ -23,11 +36,21 @@ class View
         return $output;
     }
 
+    /**
+     * outputHeader
+     *
+     * @return void
+     */
     private function outputHeader(){
         $output = "<html><head></head>";
         return $output;
     }
 
+    /**
+     * outputBodyStart
+     *
+     * @return void
+     */
     private function outputBodyStart(){
         $output = "<body>";
         $output .= "<h1>Poker Chance Calculator</h1>";
@@ -48,12 +71,16 @@ class View
         }
 
         $output .= "<label for='card_to_select'>Card:</label><select id='card_to_select' name='card_to_select'><option value='Please Select...'>Select</option>$option</select>";
-        $output .= "<p>" . $this->model->string . "</p>";
         $output .= "<input type='submit' value='Draft'></form>";
         $output .= "</body>";
         return $output;
     }
 
+    /**
+     * outputBodyNext
+     *
+     * @return void
+     */
     private function outputBodyNext(){
         $output = "<body>";
         $output .= "<h1>Poker Chance Calculator</h1>";
@@ -64,11 +91,17 @@ class View
         $output .= "<input type='hidden' id='card_to_select' name='card_to_select' value='".$this->model->card_selected."'>";
         $output .= "<input type='text' id='cards_appeared' name='cards_appeared' value='".$this->model->cards_appeared."'>";
         $output .= "<input type='submit' value='Draft Again'></form>";
+        $output .= "Probability: ".$this->model->probability_suit_card."<br>";
         $output .= "Cards Left: ".print_r($this->model->cards_left, true);
         $output .= "</body>";
         return $output;
     }
 
+    /**
+     * outputFooter
+     *
+     * @return void
+     */
     private function outputFooter(){
         $output = "</html>";
         return $output;
